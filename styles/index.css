@@ -1,0 +1,25 @@
+h1 {
+  text-align: center;
+  margin: 1em 0;
+}
+
+#listings {
+  margin: 10px;
+}
+
+.listing {
+  border: 1px solid black;
+  margin: 1em;
+  padding: 10px;
+  display: inline-block;
+  width: 30%;
+}
+
+.input-group {
+  margin: 1em;
+  max-width: 50%;
+}
+
+button {
+  margin: 1em;
+}
