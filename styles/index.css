@@ -13,6 +13,7 @@ h1 {
   padding: 10px;
   display: inline-block;
   width: 30%;
+  overflow: hidden;
 }
 
 .input-group {
@@ -22,4 +23,11 @@ h1 {
 
 button {
   margin: 1em;
+}
+
+.pic-size {
+  height: 200px;
+  max-width: 400px;
+  display: block;
+  margin: 0.5em auto;
 }

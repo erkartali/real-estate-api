@@ -42,6 +42,8 @@ $(".pure_button").click(function (e) {
     //loop through results
     for (let i = 0; i < listings.length; i++) {
       // create variables with data from call
+      const picture = listings[i].thumbnail;
+      //   console.log("picture:", picture);
       const street = listings[i].address.line;
       const city = listings[i].address.city;
       const zip_code = listings[i].address.postal_code;
@@ -52,6 +54,11 @@ $(".pure_button").click(function (e) {
       const agent = listings[i].agents[0].name;
 
       //create nodes for results to go in and add text
+
+      const pictureNode = document.createElement("img");
+      pictureNode.src = `${picture}`;
+      pictureNode.classList.add("pic-size");
+
       const addressNode = document.createElement("h5");
       const addressText = document.createTextNode(
         `Address: ${street} ${city} ${state}, ${zip_code}`
@@ -74,14 +81,16 @@ $(".pure_button").click(function (e) {
         const individualListing = document.createElement("div");
         individualListing.classList.add("listing");
 
-        //
+        // add proper text to the nodes
         addressNode.appendChild(addressText);
         bathsNode.appendChild(bathsText);
         bedsNode.appendChild(bedsText);
         priceNode.appendChild(priceText);
         agentNode.appendChild(agentText);
 
+        // add nodes to the listings div
         document.getElementById("listings").appendChild(individualListing);
+        individualListing.appendChild(pictureNode);
         individualListing.appendChild(priceNode);
         individualListing.appendChild(addressNode);
         individualListing.appendChild(bedsNode);
@@ -89,6 +98,7 @@ $(".pure_button").click(function (e) {
         individualListing.appendChild(agentNode);
       };
 
+      // call the function to create listings
       createListing();
     }
   });
