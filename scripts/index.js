@@ -84,10 +84,16 @@ $(".pure_button").click(function (e) {
       // console.log("id:", id);
 
       const bathsNode = document.createElement("h5");
-      const bathsText = document.createTextNode(`Baths: ${baths}`);
+      const bathsText =
+        baths === undefined
+          ? document.createTextNode(`Baths: N/A`)
+          : document.createTextNode(`Baths: ${baths}`);
 
       const bedsNode = document.createElement("h5");
-      const bedsText = document.createTextNode(`Bedrooms: ${beds}`);
+      const bedsText =
+        beds === null
+          ? document.createTextNode(`Bedrooms: N/A`)
+          : document.createTextNode(`Bedrooms: ${beds}`);
 
       const priceNode = document.createElement("h5");
       const priceText = document.createTextNode(
