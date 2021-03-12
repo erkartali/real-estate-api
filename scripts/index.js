@@ -16,12 +16,12 @@ $(".pure_button").click(function (e) {
   //set input city to user input or default to milwaukee
   let inputCity = document.querySelector(".user-input-city").value;
   inputCity === "" ? (inputCity = "milwaukee") : inputCity;
-  console.log("inputCity:", inputCity);
+  // console.log("inputCity:", inputCity);
 
   //set input state to user input or default to wi
   let inputState = document.querySelector(".user-input-state").value;
   inputState === "" ? (inputState = "wi") : inputState;
-  console.log("inputState:", inputState);
+  // console.log("inputState:", inputState);
 
   const settings = {
     async: true,
@@ -41,7 +41,7 @@ $(".pure_button").click(function (e) {
 
   //make api call with ajax cause fetch is busted?
   $.ajax(settings).done(function (response) {
-    console.log(response.properties);
+    // console.log(response.properties);
     let listings = response.properties;
 
     //loop through results
@@ -74,7 +74,7 @@ $(".pure_button").click(function (e) {
       urlNode.href = url;
       urlNode.target = "_blank";
       urlNode.classList.add("urls");
-      console.log("urlNode:", urlNode);
+      // console.log("urlNode:", urlNode);
 
       const addressNode = document.createElement("h5");
       const addressText = document.createTextNode(
@@ -137,7 +137,7 @@ $(".pure_button").click(function (e) {
       createListing();
     }
     let elements = document.getElementsByClassName("delete");
-    console.log("elements:", elements);
+    // console.log("elements:", elements);
     for (let i = 0; i < elements.length; i++) {
       elements[i].onclick = function () {
         console.log(this.parentNode);
