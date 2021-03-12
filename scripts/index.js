@@ -1,6 +1,11 @@
 //empty box on click if re entering info
-function clearBox(elementID) {
+const clearBox = (elementID) => {
   document.getElementById(elementID).innerHTML = "";
+};
+
+//add commas to price
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 //on click function that runs api call
@@ -44,6 +49,8 @@ $(".pure_button").click(function (e) {
       // create variables with data from call
       const picture = listings[i].thumbnail;
       //   console.log("picture:", picture);
+      const id = i + 1;
+      const url = listings[i].rdc_web_url;
       const street = listings[i].address.line;
       const city = listings[i].address.city;
       const zip_code = listings[i].address.postal_code;
@@ -51,6 +58,9 @@ $(".pure_button").click(function (e) {
       const baths = listings[i].baths;
       const beds = listings[i].beds;
       const price = listings[i].price;
+      let priceCommas = function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      };
       const agent = listings[i].agents[0].name;
 
       //create nodes for results to go in and add text
@@ -59,10 +69,19 @@ $(".pure_button").click(function (e) {
       pictureNode.src = `${picture}`;
       pictureNode.classList.add("pic-size");
 
+      const urlNode = document.createElement("a");
+      const urlText = document.createTextNode(`Click for full listing`);
+      urlNode.href = url;
+      urlNode.target = "_blank";
+      urlNode.classList.add("urls");
+      console.log("urlNode:", urlNode);
+
       const addressNode = document.createElement("h5");
       const addressText = document.createTextNode(
         `Address: ${street} ${city} ${state}, ${zip_code}`
       );
+
+      // console.log("id:", id);
 
       const bathsNode = document.createElement("h5");
       const bathsText = document.createTextNode(`Baths: ${baths}`);
@@ -71,22 +90,30 @@ $(".pure_button").click(function (e) {
       const bedsText = document.createTextNode(`Bedrooms: ${beds}`);
 
       const priceNode = document.createElement("h5");
-      const priceText = document.createTextNode(`Price: ${price}`);
+      const priceText = document.createTextNode(
+        `Price: $${priceCommas(price)}`
+      );
 
       const agentNode = document.createElement("h5");
       const agentText = document.createTextNode(`Agent: ${agent}`);
 
+      const deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete", "btn", "btn-danger");
+      const deleteButtonText = document.createTextNode(`Delete listing`);
+
       //function that creates a listing
       const createListing = () => {
         const individualListing = document.createElement("div");
-        individualListing.classList.add("listing");
+        individualListing.classList.add("listing", ".col-sm");
 
         // add proper text to the nodes
         addressNode.appendChild(addressText);
+        urlNode.appendChild(urlText);
         bathsNode.appendChild(bathsText);
         bedsNode.appendChild(bedsText);
         priceNode.appendChild(priceText);
         agentNode.appendChild(agentText);
+        deleteButton.appendChild(deleteButtonText);
 
         // add nodes to the listings div
         document.getElementById("listings").appendChild(individualListing);
@@ -96,10 +123,20 @@ $(".pure_button").click(function (e) {
         individualListing.appendChild(bedsNode);
         individualListing.appendChild(bathsNode);
         individualListing.appendChild(agentNode);
+        individualListing.appendChild(urlNode);
+        individualListing.appendChild(deleteButton);
       };
 
       // call the function to create listings
       createListing();
+    }
+    let elements = document.getElementsByClassName("delete");
+    console.log("elements:", elements);
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].onclick = function () {
+        console.log(this.parentNode);
+        this.parentNode.remove();
+      };
     }
   });
 });

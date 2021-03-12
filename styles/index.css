@@ -5,29 +5,41 @@ h1 {
 
 #listings {
   margin: 10px;
+  margin: 0 auto;
+}
+
+.hide-listing {
+  display: hidden;
+}
+
+.urls {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 .listing {
   border: 1px solid black;
+  border-radius: 15px;
   margin: 1em;
   padding: 10px;
-  display: inline-block;
-  width: 30%;
-  overflow: hidden;
+  max-width: 333px;
 }
 
 .input-group {
-  margin: 1em;
-  max-width: 50%;
+  margin: 1em auto 1em auto;
+  width: 90%;
+  max-width: 1000px;
 }
 
-button {
-  margin: 1em;
+.pure_button {
+  margin: 1em auto;
+  display: block;
+  width: 337px;
 }
 
 .pic-size {
   height: 200px;
-  max-width: 400px;
+  max-width: 300px;
   display: block;
   margin: 0.5em auto;
 }
