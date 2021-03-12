@@ -136,6 +136,8 @@ $(".pure_button").click(function (e) {
       // call the function to create listings
       createListing();
     }
+
+    //add function to delete listings on click
     let elements = document.getElementsByClassName("delete");
     // console.log("elements:", elements);
     for (let i = 0; i < elements.length; i++) {
