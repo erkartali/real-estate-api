@@ -8,7 +8,7 @@ Getting Started
 - Enter a city and state code 
 - click the search button and watch the magic happen
 
-Technologies
+Technologies:
 html, css, javascript, ajax, bootstrap
 
 Author
